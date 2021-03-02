@@ -9,7 +9,10 @@ namespace TurkMite
     private int y;
     private int direction;
     private Mat.Indexer<Vec3b> indexer;
+    
 
+    readonly Vec3b black = new Vec3b(255, 255, 255);
+    readonly Vec3b white = new Vec3b(0, 0,0);
     public TurkMite(Mat image)
     {
       Image = image;
@@ -25,33 +28,22 @@ namespace TurkMite
       Vec3b currentColor = indexer[y, x];
       if (currentColor == new Vec3b(0, 0, 0))
       {
-        indexer[y, x] = new Vec3b(255, 255, 255);
+        indexer[y, x] = black;
         direction++;
         if (direction > 3)
           direction = 0;
       }
       else
       {
-        indexer[y, x] = new Vec3b(0, 0, 0);
+        indexer[y, x] = white;
         direction--;
         if (direction < 0)
           direction = 3;
       }
-      switch (direction)
-      {
-        case 0:
-          y--;
-          break;
-        case 1:
-          x++;
-          break;
-        case 2:
-          y++;
-          break;
-        case 3:
-          x--;
-          break;
-      }
+      var delta = new(int x, int y)[] { (0, -1), (1, 0), (0, 1), (-1, 0) };
+      x += delta[direction].x;
+      y += delta[direction].y;
+
       if (x < 0)
         x = 199;
       if (x > 199)
