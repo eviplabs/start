@@ -2,7 +2,161 @@
 
 namespace TurkMite
 {
+  /* milyen esemenyek vannak 
+A:
+   harmadik fekete mezot szinezi
+    onThreeBlack -> change direction 
+    enter B 
+  B: 
+  fekete mezot feherre szinez, balra fordul es megy egyet elore
+  feher mezot pirosra szinez jobbra fordul es megy egyet elore
+  piroz mezot feketere szinez elore megy es valt c allapotra
 
+  C: 
+    allit c-re enternel
+    elore megy tovabb
+    fekete mezot feherre szinez, es balra fordul, es megy egyenesen
+    piros mezot feketere szines es balra fordul
+    ha fekete: enter A
+    ha nem: enter B
+   */ 
+  
+  class StateA: StateBase{
+    private int colourCounter;
+    public StateA(StateTurkmite st) : StateBase(st)
+    {
+      colourCounter = 0;
+    }
+
+    public Enter()
+    {
+      _turkmite.currentState = _turkmite.stateA;
+      colourCounter = 0;
+    }
+    public override HandleUpdate(Vec3 currentColor)
+    {
+      /* egyenesen megy tovabb */
+      if(currentColor == black)
+      {
+        colourCounter++;
+      } 
+      if(colourCounter == 3)
+      {
+        /* enter next state: B*/
+        _turkmite.stateB.Enter();
+        return (white,2);
+      }
+      return (currentColor, 0);
+    }
+}
+  class StateB: StateBase{
+    public StateB(StateTurkmite st) : StateBase(st)
+    {
+    }
+    public Enter()
+    {
+      _turkmite.currentState = _turkmite.stateB;
+    }
+    public override HandleUpdate(Vec3 currentColor)
+    {
+      if(currentColor == black)
+      {
+        return (white,1);
+      } 
+      if(currentColor == white)
+      {
+        return(red,3)
+      }
+      _turkmite.stateC.Enter();
+      return (black, 0);
+    }
+
+  }
+  class StateC: StateBase{
+    private bool first_state;
+    private int counter;
+    public StateC(StateTurkmite st) : StateBase(st)
+    {
+      counter = 0;
+      first_state = true;
+    }
+      
+    public Enter()
+    {
+      first_state = true;
+      counter = 0;
+      _turkmite.currentState = _turkmite.stateC;
+    }
+    public override HandleUpdate(Vec3 currentColor)
+    {
+      counter++;
+      StateTransition();
+      if(first_state)
+      {
+        first_state = false;
+        return(red, 0);
+      }
+      if(currentColor == black)
+      {
+        return(white, 1);
+      }
+      if(currentColor == white)
+      {
+        return(red, 0);
+      }
+      if(currentColor == red)
+      {
+        return(black, 1);
+      }
+    }
+    private void StateTransition(Vec3 currentColor)
+    {
+      if(counter == 5)
+      {
+        if(currentColor == red)
+        {
+          _turkmite.stateB.Enter();
+        }
+        else
+        {
+          _turkmite.stateA.Enter();
+        }
+      } 
+    }
+  }
+  class StateBase
+  {
+    private StateTurkmit _turkmite;
+    public StateBase(StateTurkmite stateTurkmite){
+      _turkmite = stateTurkmite;
+    }
+    public abstract Enter();
+    public abstract HandleUpdate(Vec3b currentColor);
+  }
+  class StateTurkmite: Turkmite
+  {
+    private State currentState;
+
+    readonly private StateB stateB = new StateB(this);
+    readonly private StateC stateC = new StateC(this);
+    readonly private StateA stateA = new StateA(this);
+
+    readonly private Vec3b black = new Vec3b(0, 0, 0);
+    readonly private Vec3b white = new Vec3b(255, 255, 255);
+    readonly private Vec3b red = new Vec3b(255, 0, 0);
+
+    public TurkmiteThreeColor(Mat image) : base(image)
+    {
+      currentState = stateA;
+      IterationCount = 1000;
+    }
+    protected override (Vec3b newColor, int deltaDirection) NextDirectionColor(Vec3b currentColor)
+  {
+    return currentState.HandleUpdate(currentColor);
+  }
+
+    protected override (Vec3b newColor, int deltaDirection) NextDirectionColor(Vec3b currentColor)
+  }
   class TurkmiteThreeColor: TurkmiteBase
   {
     readonly private Vec3b black = new Vec3b(0, 0, 0);
@@ -32,6 +186,7 @@ namespace TurkMite
   {
     readonly Vec3b black = new Vec3b(255, 255, 255);
     readonly Vec3b white = new Vec3b(0, 0,0);
+    private StateBase CurrentState{get;};
     public TurkmitOrigin(Mat image) : base(image)
     {
       IterationCount = 200;
@@ -48,7 +203,6 @@ namespace TurkMite
       }
     }  
   }
-
   abstract class TurkmiteBase
   {
 
