@@ -2,17 +2,39 @@
 
 namespace TurkMite
 {
-  class TurkMite
+  class TurkMiteOriginal : TurkmiteBase
   {
+
+
+    readonly Vec3b black = new Vec3b(255, 255, 255);
+    readonly Vec3b white = new Vec3b(0, 0,0);
+    public TurkmitOrigin(Mat image) : base(image)
+    {
+    }
+    private (Vec3b newColor, int deltaDirection)  NextDirectionColor(Vec3b currentColor)
+    {
+
+      if (currentColor == white)
+      {
+        return (black, 1);
+      }
+      else
+      {
+        return (white, -1);
+      }
+    }  
+  }
+
+  abstract class TurkmiteBase
+  {
+
     public Mat Image {get;}
     private int x;
     private int y;
     private int direction;
     private Mat.Indexer<Vec3b> indexer;
 
-
-    readonly Vec3b black = new Vec3b(255, 255, 255);
-    readonly Vec3b white = new Vec3b(0, 0,0);
+    private readonly (int x, int y)[] delta = new (int x, int y)[] { (0, -1), (1, 0), (0, 1), (-1, 0) };
     public TurkMite(Mat image)
     {
       Image = image;
@@ -22,25 +44,12 @@ namespace TurkMite
       indexer = image.GetGenericIndexer<Vec3b>();
 
     }
-    private Vec3b GetColorUpdateDirection(Vec3b currentColor)
-    {
 
-      if (currentColor == white)
-      {
-        direction++;
-        return black;
-      }
-      else
-      {
-        direction--;
-        return white;
-      }
-    }  
-    public void Move()
+    public void Move(int deltaDirection)
     {
+      direction += deltaDirection;
       direction = (direction + 4) % 4;
 
-      var delta = new(int x, int y)[] { (0, -1), (1, 0), (0, 1), (-1, 0) };
 
       x += delta[direction].x;
       y += delta[direction].y;
@@ -51,11 +60,13 @@ namespace TurkMite
 
     public void Step()
     {
-      Vec3b currentColor = indexer[y, x];
-      currentColor = GetColorUpdateDirection(currentColor);
-      Move();
-
+      int deltaDirection;
+      (indexer[y, x], deltaDirection)  = NextDirectionColor(indexer[y,x]);
+      Move(deltaDirection);
     }
+
+    protected abstract (Vec3b newColor, int deltaDirection) NextDirectionColor(Vec3b currentColor);
+
   }
   class Program
   {
@@ -63,7 +74,7 @@ namespace TurkMite
     static void Main()
     {
       Mat img = new Mat(200, 200, MatType.CV_8UC3, new Scalar(0, 0, 0));
-      var turkmite = new TurkMite(img);
+      var turkmite = new TurkMiteOriginal(img);
       for(int i=0; i<13000; i++)
       {
         turkmite.Step();
