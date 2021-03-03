@@ -9,7 +9,7 @@ namespace TurkMite
         readonly public StateB stateB;
         readonly public StateC stateC;
         readonly public StateA stateA;
-        public override int IterationCount => 15000;
+        public override int IterationCount => 800000;
        
 
         public StateTurkmite(Mat image) : base(image)
