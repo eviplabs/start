@@ -4,11 +4,12 @@ namespace TurkMite
 {
     class StateTurkmite : TurkmiteBase
     {
-        public StateBase currentState;
+        public StateBase CurrentState { get; set; }
 
         readonly public StateB stateB;
         readonly public StateC stateC;
         readonly public StateA stateA;
+
         public override int IterationCount => 800000;
        
 
@@ -17,12 +18,12 @@ namespace TurkMite
             stateA = new StateA(this);
             stateB = new StateB(this);
             stateC = new StateC(this);
-            currentState = stateA;
+            CurrentState = stateA;
 
         }
         protected override (Vec3b newColor, int deltaDirection) NextDirectionColor(Vec3b currentColor)
         {
-            return currentState.HandleUpdate(currentColor);
+            return CurrentState.HandleUpdate(currentColor);
         }
 
     }
