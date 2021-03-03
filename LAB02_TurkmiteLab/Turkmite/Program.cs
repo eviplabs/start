@@ -10,7 +10,7 @@ namespace TurkMite
     readonly private Vec3b red = new Vec3b(255, 0, 0);
     public TurkmiteThreeColor(Mat image) : base(image)
     {
-
+      IterationCount = 100;
     }
     protected override (Vec3b newColor, int deltaDirection) NextDirectionColor(Vec3b currentColor)
     {
@@ -26,24 +26,18 @@ namespace TurkMite
       {
         return (black, -1);
       }
-
-
     }
-
-
   }
   class TurkMiteOriginal : TurkmiteBase
   {
-
-
     readonly Vec3b black = new Vec3b(255, 255, 255);
     readonly Vec3b white = new Vec3b(0, 0,0);
     public TurkmitOrigin(Mat image) : base(image)
     {
+      IterationCount = 200;
     }
     private (Vec3b newColor, int deltaDirection)  NextDirectionColor(Vec3b currentColor)
     {
-
       if (currentColor == white)
       {
         return (black, 1);
@@ -63,6 +57,7 @@ namespace TurkMite
     private int y;
     private int direction;
     private Mat.Indexer<Vec3b> indexer;
+    public abstract int IterationCount{get;}
 
     private readonly (int x, int y)[] delta = new (int x, int y)[] { (0, -1), (1, 0), (0, 1), (-1, 0) };
     public TurkMite(Mat image)
@@ -105,7 +100,7 @@ namespace TurkMite
     {
       Mat img = new Mat(200, 200, MatType.CV_8UC3, new Scalar(0, 0, 0));
       var turkmite = new TurkMiteOriginal(img);
-      for(int i=0; i<13000; i++)
+      for(int i=0; i<turkmite.IterationNumber; i++)
       {
         turkmite.Step();
       }
