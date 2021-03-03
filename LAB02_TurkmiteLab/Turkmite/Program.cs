@@ -77,17 +77,15 @@ namespace TurkMite
     }
     class StateC : StateBase
     {
-        private bool first_state;
         private int counter;
         public StateC(StateTurkmite st) : base(st)
         {
             counter = 0;
-            first_state = true;
+          
         }
 
         public override void Enter()
         {
-            first_state = true;
             counter = 0;
             _turkmite.currentState = _turkmite.stateC;
         }
@@ -95,9 +93,8 @@ namespace TurkMite
         {
             counter++;
             StateTransition(currentColor);
-            if (first_state)
+            if (counter == 1)
             {
-                first_state = false;
                 return (red, 0);
             }
             if (currentColor == black)
@@ -263,7 +260,6 @@ namespace TurkMite
     }
     class Program
     {
-
         static void Main()
         {
             Mat img = new Mat(200, 200, MatType.CV_8UC3, new Scalar(0, 0, 0));
