@@ -10,9 +10,7 @@ namespace TurkMite
         readonly public StateC stateC;
         readonly public StateA stateA;
         public override int IterationCount => 15000;
-        readonly private Vec3b black = new Vec3b(0, 0, 0);
-        readonly private Vec3b white = new Vec3b(255, 255, 255);
-        readonly private Vec3b red = new Vec3b(255, 0, 0);
+       
 
         public StateTurkmite(Mat image) : base(image)
         {
