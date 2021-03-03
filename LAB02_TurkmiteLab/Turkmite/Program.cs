@@ -23,7 +23,7 @@ A:
   
   class StateA: StateBase{
     private int colourCounter;
-    public StateA(StateTurkmite st) : StateBase(st)
+    public StateA(StateTurkmite st) : base(st)
     {
       colourCounter = 0;
     }
@@ -50,7 +50,7 @@ A:
     }
 }
   class StateB: StateBase{
-    public StateB(StateTurkmite st) : StateBase(st)
+    public StateB(StateTurkmite st) : base(st)
     {
     }
     public Enter()
@@ -65,7 +65,7 @@ A:
       } 
       if(currentColor == white)
       {
-        return(red,3)
+        return(red,3);
       }
       _turkmite.stateC.Enter();
       return (black, 0);
@@ -75,7 +75,7 @@ A:
   class StateC: StateBase{
     private bool first_state;
     private int counter;
-    public StateC(StateTurkmite st) : StateBase(st)
+    public StateC(StateTurkmite st) : base(st)
     {
       counter = 0;
       first_state = true;
@@ -155,8 +155,7 @@ A:
     return currentState.HandleUpdate(currentColor);
   }
 
-    protected override (Vec3b newColor, int deltaDirection) NextDirectionColor(Vec3b currentColor)
-  }
+}
   class TurkmiteThreeColor: TurkmiteBase
   {
     readonly private Vec3b black = new Vec3b(0, 0, 0);
@@ -186,12 +185,12 @@ A:
   {
     readonly Vec3b black = new Vec3b(255, 255, 255);
     readonly Vec3b white = new Vec3b(0, 0,0);
-    private StateBase CurrentState{get;};
+    private StateBase CurrentState{get;}
     public TurkmitOrigin(Mat image) : base(image)
     {
       IterationCount = 200;
     }
-    private (Vec3b newColor, int deltaDirection)  NextDirectionColor(Vec3b currentColor)
+    private override (Vec3b newColor, int deltaDirection)  NextDirectionColor(Vec3b currentColor)
     {
       if (currentColor == white)
       {
