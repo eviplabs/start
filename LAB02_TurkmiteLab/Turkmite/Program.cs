@@ -9,7 +9,7 @@ namespace TurkMite
     private int y;
     private int direction;
     private Mat.Indexer<Vec3b> indexer;
-    
+
 
     readonly Vec3b black = new Vec3b(255, 255, 255);
     readonly Vec3b white = new Vec3b(0, 0,0);
@@ -22,24 +22,24 @@ namespace TurkMite
       indexer = image.GetGenericIndexer<Vec3b>();
 
     }
-
-    public void Step()
+    private Vec3b GetColorUpdateDirection(Vec3b currentColor)
     {
-      Vec3b currentColor = indexer[y, x];
+
       if (currentColor == white)
       {
-        indexer[y, x] = black;
         direction++;
-        if (direction > 3)
-          direction = 0;
+        return black;
       }
       else
       {
-        indexer[y, x] = white;
         direction--;
-        if (direction < 0)
-          direction = 3;
+        return white;
       }
+    }  
+    public void Move()
+    {
+      direction = (direction + 4) % 4;
+
       var delta = new(int x, int y)[] { (0, -1), (1, 0), (0, 1), (-1, 0) };
 
       x += delta[direction].x;
@@ -47,6 +47,13 @@ namespace TurkMite
 
       x = Math.Max(0, Math.Min(Image.Cols, x));
       y = Math.Max(0, Math.Min(Image.Rows, y));
+    }
+
+    public void Step()
+    {
+      Vec3b currentColor = indexer[y, x];
+      currentColor = GetColorUpdateDirection(currentColor);
+      Move();
 
     }
   }
