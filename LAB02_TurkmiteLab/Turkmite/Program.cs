@@ -68,12 +68,11 @@ namespace TurkMite
             }
             if (currentColor == white)
             {
-                return (red, 3);
+                return (red, -1);
             }
             _turkmite.stateC.Enter();
             return (black, 0);
         }
-
     }
     class StateC : StateBase
     {
@@ -81,7 +80,6 @@ namespace TurkMite
         public StateC(StateTurkmite st) : base(st)
         {
             counter = 0;
-          
         }
 
         public override void Enter()
@@ -92,7 +90,7 @@ namespace TurkMite
         public override (Vec3b newColor, int deltaDirection) HandleUpdate(Vec3b currentColor)
         {
             counter++;
-            StateTransition(currentColor);
+            CheckStateTransition(currentColor);
             if (counter == 1)
             {
                 return (red, 0);
@@ -107,10 +105,10 @@ namespace TurkMite
             }
             else
             {
-                return (black, 1);
+                return (black, 3); // turn left
             }
         }
-        private void StateTransition(Vec3b currentColor)
+        private void CheckStateTransition(Vec3b currentColor)
         {
             if (counter == 5)
             {
