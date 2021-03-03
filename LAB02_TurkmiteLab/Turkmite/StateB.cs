@@ -9,7 +9,7 @@ namespace TurkMite
         }
         public override void Enter()
         {
-            _turkmite.currentState = _turkmite.stateB;
+            stateTurkmite.currentState = stateTurkmite.stateB;
         }
         public override (Vec3b newColor, int deltaDirection) HandleUpdate(Vec3b currentColor)
         {
@@ -21,7 +21,7 @@ namespace TurkMite
             {
                 return (red, -1);
             }
-            _turkmite.stateC.Enter();
+            stateTurkmite.stateC.Enter();
             return (black, 0);
         }
     }
