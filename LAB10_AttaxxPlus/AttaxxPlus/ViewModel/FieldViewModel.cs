@@ -45,6 +45,10 @@ namespace AttaxxPlus.ViewModel
                 if (isSelected != value)
                 {
                     isSelected = value;
+                    // 3. feladat =true-nál csak false értékre futna le, illetve nem itt van a lénye, mivel
+                    // ez általában mindig meghívódna, mivel az eredeti is állítja ezt és ott ezt negálva csinálja.
+                    // GameViewModel-nél a FieldViewModel propertijének a setter-je a lényeg és ott is van egy notify,
+                    // ami nem futna le, ha csak ennek a setter-je hívódna meg.
                     Notify();
                 }
             }

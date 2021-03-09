@@ -30,6 +30,8 @@ namespace AttaxxPlus.ViewModel
             FieldViewModel current = parameter as FieldViewModel;
 
             // Clicking own field selects that field.
+            // 2. feladat itt dob null reference exception-t, mikor kijelölnék egy mezőt, fordítási időben talán azért nem dob hibát
+            // ,mert a view-t le tujda generálni így is és csak az elemet nem tudja létrehozni futásnál, így arra jön a nullreference.
             if (current.Owner == vm.CurrentPlayer)
             {
                 vm.SelectedField = current;

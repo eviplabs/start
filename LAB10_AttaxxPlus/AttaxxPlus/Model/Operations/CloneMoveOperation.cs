@@ -15,8 +15,13 @@ namespace AttaxxPlus.Model.Operations
 
             // Note: selectedField is always the players own field...
             // EVIP: IsEmpty() is more descriptive than "Owner == 0"
-            if (Math.Abs(selectedField.Row - currentField.Row)
-                + Math.Abs(selectedField.Column - currentField.Column) == 1
+            // 4. feladat megtartottam az első feltélt és egy vaggyal lekérdezem, hogy a távolság 1-1 mindkét irányban akkor átlósan akar egyet lépni és az engedélyezett
+            // ezt a lentebbi mathresultban nézem meg a jobb átláthatóság miatt
+            bool mathresult = Math.Abs(selectedField.Row - currentField.Row) == 1 && Math.Abs(selectedField.Column - currentField.Column) == 1;
+
+            if ((Math.Abs(selectedField.Row - currentField.Row) 
+                + Math.Abs(selectedField.Column - currentField.Column) == 1 
+                || mathresult)
                 && !selectedField.IsEmpty()
                 && currentField.IsEmpty())
             {

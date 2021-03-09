@@ -56,14 +56,37 @@ namespace AttaxxPlus.Model
         // EVIP: read-only property as body expression
         public bool IsGameRunning => Winner is null;
 
+        // 9. feladat itt egy picit változtattam, hogy 3 játékosra is működjön a surrender, kicsit más alapelven
         public void EndOfTurn()
         {
             if (!CheckGameOver())
             {
+                int[] counts = new int[NumberOfPlayers + 1];
+                foreach (var f in Fields)
+                    counts[f.Owner]++;
                 if (CurrentPlayer < NumberOfPlayers)
+                {
                     CurrentPlayer++;
+                    if (counts[CurrentPlayer] == 0)
+                    {
+                        if(CurrentPlayer == NumberOfPlayers)
+                        {
+                            CurrentPlayer = 1;
+                        }
+                        else
+                        {
+                            CurrentPlayer++;
+                        }
+                    }
+                }
                 else
+                {
                     CurrentPlayer = 1;
+                    if (counts[CurrentPlayer] == 0)
+                    {
+                        CurrentPlayer++;
+                    }
+                }
             }
         }
 
