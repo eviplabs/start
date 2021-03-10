@@ -4,9 +4,9 @@ Erről a repositoryról készülnek a hallgatói személyes másolatok a classro
 A repository private, a tárgy oktatóin kívül más nem láthatja.
 Az egyértelmű azonosíthatóság érdekében kérünk, add meg az alábbiakat:
 
-## NÉV: 
-## Neptun-kód: 
-## Kurzus: 
+## NÉV: Fegyvári Tamás
+## Neptun-kód: QJCR4A
+## Kurzus: RATLAB2 L2 SDE10
 
 # Hasznos linkek 
 
