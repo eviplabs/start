@@ -39,8 +39,7 @@
                                     Static konverter kivétel ellenőrzés céljából-->
                                     <Button Command="{x:Bind FieldCommand, Mode=OneWay}" CommandParameter="{x:Bind }"
                                             MinHeight="40" MinWidth="40" Margin="2"
-                                            
-                                            Background="{x:Bind Owner, Mode=OneWay, Converter={StaticResource OwnerIndex2BrushConverter21}}"
+                                            Background="{x:Bind Owner, Mode=OneWay, Converter={StaticResource OwnerIndex2BrushConverter}}"
                                             BorderBrush="{x:Bind IsSelected, Mode=OneWay, Converter={StaticResource IsSelected2BrushConverter}}"/>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>

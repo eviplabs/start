@@ -33,6 +33,8 @@ namespace AttaxxPlus.ViewModel
             // a 2. feladatban a konverter hiánya ezen a ponton dob null exception-t ez talán azért nem jön elő fordításkor, mert a konvertert csak futás időben használja. A xaml pedig le tud generálódni
             if (current.Owner == vm.CurrentPlayer)
             {
+                //3. feladat: selectedfield működésének ellenőrzése
+                //current.IsSelected = true;
                 vm.SelectedField = current;
                 return;
             }

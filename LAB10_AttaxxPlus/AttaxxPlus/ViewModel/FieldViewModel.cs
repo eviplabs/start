@@ -40,10 +40,10 @@ namespace AttaxxPlus.ViewModel
             get => isSelected;
             set
             {
-                // EVIP: setter checking for true change and calling
-                //  derived Notify with automatic property name
+
                 if (isSelected != value)
                 {
+                    //3. feladat: ha csak ezt módosítjuk akkor a GameViewModel-ben a FieldViewModel property-nek a setterjében lévő Notify() függvény nem hívódik meg. 
                     isSelected = value;
                     Notify();
                 }
