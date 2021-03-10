@@ -4,9 +4,9 @@ Erről a repositoryról készülnek a hallgatói személyes másolatok a classro
 A repository private, a tárgy oktatóin kívül más nem láthatja.
 Az egyértelmű azonosíthatóság érdekében kérünk, add meg az alábbiakat:
 
-## NÉV: 
-## Neptun-kód: 
-## Kurzus: 
+## NÉV: Orosz Bence - Szombati Attila (1 Windows-os gép állt rendelkezésre.)
+## Neptun-kód: H9KF5S - FCTAWV
+## Kurzus: RATLAB2 L2
 
 # Hasznos linkek 
 
