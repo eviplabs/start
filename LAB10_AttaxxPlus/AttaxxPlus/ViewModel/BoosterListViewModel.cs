@@ -24,6 +24,8 @@ namespace AttaxxPlus.ViewModel
                 // EVIP: using reflection to instantiate objects
                 IBooster booster = Activator.CreateInstance(boosterType.AsType()) as IBooster;
                 booster.GameViewModel = gameViewModel;
+                //5. feladat: A booster view a Boosters listához volt kötve, amit a konstruktor nem töltött fel
+                Boosters.Add(booster);
             }
         }
     }
