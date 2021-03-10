@@ -17,7 +17,25 @@ namespace AttaxxPlus.Boosters
 
         public override bool TryExecute(Field selectedField, Field currentField)
         {
-            return false;
+            //SurrenderBooster készítése
+            for (int i = 0; i < this.GameViewModel.Fields.Count; i++)
+            {
+                for (int j = 0; j < this.GameViewModel.Fields.Count; j++)
+                {
+                    if (this.GameViewModel.Model.Fields[i, j].Owner == 0)
+                    {
+                        if (this.GameViewModel.CurrentPlayer == 1)
+                        {
+                            this.GameViewModel.Model.Fields[i, j].Owner = 2;
+                        }
+                        else
+                        {
+                            this.GameViewModel.Model.Fields[i, j].Owner = 1;
+                        }
+                    }
+                }
+            }
+            return true;
         }
     }
 }
