@@ -45,7 +45,8 @@ namespace AttaxxPlus.Boosters
                 Notify(nameof(Title));
                 return true;
             }
-            return true;
+            // 6. feladat: ez itt true-val tért vissza, akkor is ha elfogyott a booster. így már működik
+            return false;
         }
     }
 }
