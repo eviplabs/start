@@ -60,7 +60,7 @@
                             <!--EVIP: StackPabel inside Button -->
                             <StackPanel Orientation="Horizontal" Spacing="5">
                                 <Image Width="30" Height="30" Source="{x:Bind Image, Mode=OneWay}"/>
-                                <TextBlock Width="100" VerticalAlignment="Center"
+                                <TextBlock Width="150" VerticalAlignment="Center"
                                            Text="{x:Bind Title, Mode=OneWay}" Foreground="Black"/>
                             </StackPanel>
                         </Button>
