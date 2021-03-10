@@ -11,7 +11,7 @@
     <AssemblyName>AttaxxPlus</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.17134.0</TargetPlatformVersion>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.18362.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.17134.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
@@ -123,6 +123,7 @@
     <Compile Include="Boosters\DummyBooster.cs" />
     <Compile Include="Boosters\IBooster.cs" />
     <Compile Include="Boosters\SurrenderBooster.cs" />
+    <Compile Include="Boosters\UltimateBooster.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -156,6 +157,7 @@
   <ItemGroup>
     <Content Include="Boosters\DummyBooster.png" />
     <Content Include="Boosters\SurrenderBooster.png" />
+    <Content Include="Boosters\UltimateBooster.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

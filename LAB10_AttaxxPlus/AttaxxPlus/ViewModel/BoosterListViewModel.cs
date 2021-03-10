@@ -23,6 +23,7 @@ namespace AttaxxPlus.ViewModel
             {
                 // EVIP: using reflection to instantiate objects
                 IBooster booster = Activator.CreateInstance(boosterType.AsType()) as IBooster;
+                Boosters.Add(booster); //Feladat 5
                 booster.GameViewModel = gameViewModel;
             }
         }

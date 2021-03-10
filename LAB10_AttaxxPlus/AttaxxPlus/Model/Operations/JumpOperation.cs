@@ -16,10 +16,12 @@ namespace AttaxxPlus.Model.Operations
                 return false;
             int deltaRow = Math.Abs(selectedField.Row - currentField.Row);
             int deltaCol = Math.Abs(selectedField.Column - currentField.Column);
-            if (deltaRow != 0 && deltaCol != 0)
+
+            if (deltaRow == 1 || deltaCol == 1)
                 return false;
             if (deltaRow != 2 && deltaCol != 2)
                 return false;
+
             if (selectedField.Owner == 0)
                 return false;
             if (currentField.Owner != 0)

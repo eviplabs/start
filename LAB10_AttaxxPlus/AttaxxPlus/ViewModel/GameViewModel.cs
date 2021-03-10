@@ -37,7 +37,7 @@ namespace AttaxxPlus.ViewModel
                     // EVIP: compact object initialization.
                     rowList.Add(
                         new FieldViewModel(Model.Fields[row, col])
-                            { FieldCommand = fieldCommand }
+                        { FieldCommand = fieldCommand }
                         );
                 }
                 Fields.Add(rowList);
