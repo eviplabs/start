@@ -10,14 +10,25 @@ namespace AttaxxPlus.Boosters
     {
         // EVIP: compact override of getter for Title returning constant.
         public override string Title => "Surrender";
-
+        //#8
         public SurrenderBooster() : base()
         {
+            LoadImage(new Uri(@"ms-appx:///Boosters/SurrenderBooster.png"));
         }
 
         public override bool TryExecute(Field selectedField, Field currentField)
         {
-            return false;
+            for (int i = 0; i < GameViewModel.Fields.Count; i++)
+            {
+                for (int j = 0; j < GameViewModel.Fields.Count; j++)
+                {
+                    if (GameViewModel.Model.Fields[i, j].Owner == 0)
+                    {
+                        GameViewModel.Model.Fields[i, j].Owner = 3 - GameViewModel.CurrentPlayer;
+                    }
+                }
+            }
+            return true;
         }
     }
 }

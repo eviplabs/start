@@ -2,7 +2,7 @@
 using AttaxxPlus.Model;
 using AttaxxPlus.ViewModel;
 using Windows.UI.Xaml.Media.Imaging;
-//TESZT15
+
 namespace AttaxxPlus.Boosters
 {
     public abstract class BoosterBase : ObservableObject, IBooster
