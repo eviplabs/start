@@ -71,6 +71,22 @@ namespace AttaxxPlus.Model
         {
             Winner = null;  // Game can have been reinitialized since last check.
             // Count fields for every player (player 0 is empty field)
+
+            if (Global.Globals.Surrenderer != 0)
+            {
+                switch (Global.Globals.Surrenderer)
+                {
+                    case 1:
+                        Winner = 2;
+                        Global.Globals.Surrenderer = 0;
+                        return true;
+                    case 2:
+                        Winner = 1;
+                        Global.Globals.Surrenderer = 0;
+                        return true;
+                }
+            }
+
             int[] counts = new int[NumberOfPlayers+1];
             foreach (var f in Fields)
                 counts[f.Owner]++;
