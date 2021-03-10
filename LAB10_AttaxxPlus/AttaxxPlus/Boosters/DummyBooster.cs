@@ -11,7 +11,7 @@ namespace AttaxxPlus.Boosters
     {
         // How many times can the user activate this booster
         // 7. feladat a játékosokhoz tartozó boosterek számát egy tömb tárolja
-        private int[] usableCounter = new int[] {0, 2, 2 };
+        private int[] usableCounter = new int[] {0, 2, 2};
 
         // EVIP: overriding abstract property in base class.
         //7. feladat: kiírandó sztring felülírása
@@ -35,7 +35,7 @@ namespace AttaxxPlus.Boosters
 
         public override void InitializeGame()
         {
-            usableCounter = new int[] { 0, 2, 2 };
+            usableCounter = new int[] { 0, 2, 2};
         }
 
         public override bool TryExecute(Field selectedField, Field currentField)
