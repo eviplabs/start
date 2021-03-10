@@ -10,10 +10,12 @@ namespace AttaxxPlus.Boosters
     public class DummyBooster : BoosterBase
     {
         // How many times can the user activate this booster
-        private int usableCounter = 2;
+        // 7. feladat a használhatóságot jelző változót tömbre változtatva külön tárolható, melyik játékos hányszor haználhatja a boostert. 
+        // Ezután ahol ezt használjuk azokat a kódrészleteket is módosítanunk kell
+        private int[] usableCounter = { 0, 2, 2};
 
         // EVIP: overriding abstract property in base class.
-        public override string Title { get => $"Dummy ({usableCounter})"; }
+        public override string Title { get => $"Dummy ({usableCounter[this.GameViewModel.CurrentPlayer]})"; }
 
         public DummyBooster()
             : base()
@@ -33,19 +35,22 @@ namespace AttaxxPlus.Boosters
 
         public override void InitializeGame()
         {
-            usableCounter = 2;
+            
         }
 
         public override bool TryExecute(Field selectedField, Field currentField)
         {
             // Note: if you need a player-dependent counter, use this.GameViewModel.CurrentPlayer.
-            if (usableCounter > 0)
+            // 7. feladat
+            if (usableCounter[this.GameViewModel.CurrentPlayer] > 0)
             {
-                usableCounter--;
+                // 7. feladat
+                usableCounter[this.GameViewModel.CurrentPlayer]--;
                 Notify(nameof(Title));
                 return true;
             }
-            return true;
+            //6. feladat a visszaadott bool érték mindig igaz volt ez okozta ahibás működést
+            return false;
         }
     }
 }

@@ -13,11 +13,30 @@ namespace AttaxxPlus.Boosters
 
         public SurrenderBooster() : base()
         {
+            LoadImage(new Uri(@"ms-appx:///Boosters/SurrenderBooster.png"));
         }
+        // 9. feladat végig iterálunk a játékmezőn és minden mező tulajdonosát a feladó játékos ellenfelére állítjuk
+        // nem csak az üres mezőket színezzük át mivel így csalni is lehetne a boosterrel, a feladást úgy tekintük, hogy mindenképp veszítsen a feladó játékos
+        // tehát az összes mezőt az ellenfél játékosnak adjuk
 
         public override bool TryExecute(Field selectedField, Field currentField)
         {
-            return false;
+
+            for (int i = 0; i < this.GameViewModel.Fields.Count; i++)
+            {
+                for (int j = 0; j < this.GameViewModel.Fields.Count; j++)
+                {
+                    if(this.GameViewModel.CurrentPlayer == 1)
+                    {
+                        this.GameViewModel.Model.Fields[i, j].Owner = 2;
+                    }
+                    else
+                    {
+                        this.GameViewModel.Model.Fields[i, j].Owner = 1;
+                    }
+                }
+            }
+            return true;
         }
     }
 }
