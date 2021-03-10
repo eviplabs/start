@@ -3,6 +3,7 @@ using System.Linq;
 using System;
 using AttaxxPlus.Model;
 using Windows.UI.Popups;
+using System.Diagnostics;
 
 namespace AttaxxPlus.ViewModel
 {
