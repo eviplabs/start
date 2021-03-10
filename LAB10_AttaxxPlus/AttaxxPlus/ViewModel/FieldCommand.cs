@@ -30,6 +30,7 @@ namespace AttaxxPlus.ViewModel
             FieldViewModel current = parameter as FieldViewModel;
 
             // Clicking own field selects that field.
+            // a 2. feladatban a konverter hiánya ezen a ponton dob null exception-t ez talán azért nem jön elő fordításkor, mert a konvertert csak futás időben használja. A xaml pedig le tud generálódni
             if (current.Owner == vm.CurrentPlayer)
             {
                 vm.SelectedField = current;

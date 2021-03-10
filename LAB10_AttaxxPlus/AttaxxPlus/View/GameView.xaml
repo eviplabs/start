@@ -35,10 +35,12 @@
                         <ItemsControl ItemsSource="{x:Bind Mode=OneWay}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate x:DataType="vm:FieldViewModel">
-                                    <!-- EVIP: Button without content. Margin is set for all directions at once. IValueConverter usage. -->
+                                    <!-- EVIP: Button without content. Margin is set for all directions at once. IValueConverter usage. 
+                                    Static konverter kivétel ellenőrzés céljából-->
                                     <Button Command="{x:Bind FieldCommand, Mode=OneWay}" CommandParameter="{x:Bind }"
                                             MinHeight="40" MinWidth="40" Margin="2"
-                                            Background="{x:Bind Owner, Mode=OneWay, Converter={StaticResource OwnerIndex2BrushConverter}}"
+                                            
+                                            Background="{x:Bind Owner, Mode=OneWay, Converter={StaticResource OwnerIndex2BrushConverter21}}"
                                             BorderBrush="{x:Bind IsSelected, Mode=OneWay, Converter={StaticResource IsSelected2BrushConverter}}"/>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
