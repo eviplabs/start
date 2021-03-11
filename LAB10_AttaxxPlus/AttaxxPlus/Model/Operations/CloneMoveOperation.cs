@@ -15,10 +15,9 @@ namespace AttaxxPlus.Model.Operations
 
             // Note: selectedField is always the players own field...
             // EVIP: IsEmpty() is more descriptive than "Owner == 0"
-            if (Math.Abs(selectedField.Row - currentField.Row)
-                + Math.Abs(selectedField.Column - currentField.Column) == 1
-                && !selectedField.IsEmpty()
-                && currentField.IsEmpty())
+            int rowDist = Math.Abs(selectedField.Row - currentField.Row);
+            int colDist = Math.Abs(selectedField.Column - currentField.Column);
+            if ((rowDist + colDist == 1 || (rowDist == 1 && colDist == 1)) && !selectedField.IsEmpty() && currentField.IsEmpty())
             {
                 currentField.Owner = selectedField.Owner;
                 // EVIP: using more general helper method implemented by base class
