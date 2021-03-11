@@ -4,9 +4,9 @@ Erről a repositoryról készülnek a hallgatói személyes másolatok a classro
 A repository private, a tárgy oktatóin kívül más nem láthatja.
 Az egyértelmű azonosíthatóság érdekében kérünk, add meg az alábbiakat:
 
-## NÉV: 
-## Neptun-kód: 
-## Kurzus: 
+## NÉV: Kiséry Máté Soma  
+## Neptun-kód: G0RPWQ
+## Kurzus: CDE9
 
 # Hasznos linkek 
 
