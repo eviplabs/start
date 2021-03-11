@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace AttaxxPlus.Model
 {
@@ -102,7 +104,90 @@ namespace AttaxxPlus.Model
                     ? playerWithMaxFields : 0;
                 return true;
             }
+
+
+            //Check if player 2 or player 1 is surrounded
+            List<(int, int)> positions1 = FindPos(1);            
+            bool allSorrounded1 = true;
+            foreach (var item in positions1)
+            {
+                if (!CheckSurround(item.Item1, item.Item2))
+                    allSorrounded1 = false;
+            }
+            if (allSorrounded1)
+            {
+                Winner = 2;
+                return true;
+            }
+
+            List<(int, int)> positions2 = FindPos(2);
+            bool allSorrounded2 = true;
+            foreach (var item in positions2)
+            {
+                if (!CheckSurround(item.Item1, item.Item2))
+                    allSorrounded2 = false;              
+            }
+            if (allSorrounded2)
+            {
+                Winner = 1;
+                return true;
+            }
+
             return false;
+        }        
+
+        private List<(int row, int col)>  FindPos(int player)
+        {
+            List<(int, int)> pos = new List<(int, int)>();
+            foreach (var item in Fields)
+            {
+                if (item.Owner == player)
+                {
+                    pos.Add((item.Row, item.Column));
+                }
+            }
+            return pos;
         }
+
+        private bool CheckSurround(int row, int col)
+        {
+            List<Field> surroundings = CaluclateSurroundings(row, col);
+
+            foreach (var item in surroundings)
+            {
+                if (item.Owner == 0)
+                {
+                    return false;
+                }
+            }
+            return true;
+
+        }
+
+        private List<Field> CaluclateSurroundings(int row, int col)
+        {
+            List<Field> surroundings = new List<Field>();
+
+            int deltaRow;
+            int deltaCol;
+            foreach (var item in Fields)
+            {
+                deltaRow = Math.Abs(item.Row - row);
+                deltaCol = Math.Abs(item.Column - col);
+
+                if (deltaRow == 0 && deltaCol == 0)
+                    continue;
+
+                if ((deltaRow <= 2 && deltaCol == 0) ||
+                    (deltaRow == 0 && deltaCol <= 2) ||
+                    (deltaRow == 1 && deltaCol == 1))
+                {
+                    surroundings.Add(item);
+                }
+            }
+
+            return surroundings;
+        }
+
     }
 }
