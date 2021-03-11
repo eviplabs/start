@@ -45,7 +45,11 @@ namespace AttaxxPlus.Boosters
                 Notify(nameof(Title));
                 return true;
             }
-            return true;
+            else 
+            {
+                return false;
+            }
+            
         }
     }
 }
