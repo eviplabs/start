@@ -119,6 +119,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Boosters\BombBooster.cs" />
     <Compile Include="Boosters\BoosterBase.cs" />
     <Compile Include="Boosters\DummyBooster.cs" />
     <Compile Include="Boosters\IBooster.cs" />
@@ -154,6 +155,7 @@
     <None Include="AttaxxPlus_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Boosters\BombBooster.png" />
     <Content Include="Boosters\DummyBooster.png" />
     <Content Include="Boosters\SurrenderBooster.png" />
     <Content Include="Properties\Default.rd.xml" />
