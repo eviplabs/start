@@ -1,5 +1,6 @@
 ﻿using System;
 using AttaxxPlus.Model;
+using AttaxxPlus.ViewModel;
 
 namespace AttaxxPlus.Boosters
 {
@@ -17,7 +18,17 @@ namespace AttaxxPlus.Boosters
 
         public override bool TryExecute(Field selectedField, Field currentField)
         {
-            return false;
+            foreach (FieldViewModelList rows in GameViewModel.Fields)
+            {
+                foreach (FieldViewModel columns in rows)
+                {
+                    if(columns.Owner == 0)
+                    {
+                        columns.Model.Owner = GameViewModel.CurrentPlayer == 1 ? 2 : 1;
+                    }
+                }
+            }
+            return true;
         }
     }
 }
