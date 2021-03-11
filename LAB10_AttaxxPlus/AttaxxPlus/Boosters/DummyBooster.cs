@@ -36,6 +36,7 @@ namespace AttaxxPlus.Boosters
             usableCounter[0] = 0;
             usableCounter[1] = 2;
             usableCounter[2] = 2;
+            CurrentPlayerChanged();
         }
 
         public override bool TryExecute(Field selectedField, Field currentField)
