@@ -4,9 +4,9 @@ Erről a repositoryról készülnek a hallgatói személyes másolatok a classro
 A repository private, a tárgy oktatóin kívül más nem láthatja.
 Az egyértelmű azonosíthatóság érdekében kérünk, add meg az alábbiakat:
 
-## NÉV: 
-## Neptun-kód: 
-## Kurzus: 
+## NÉV: Rétfalvi Tamás
+## Neptun-kód: H5BQ03
+## Kurzus: CDE10
 
 # Hasznos linkek 
 
