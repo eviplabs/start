@@ -30,8 +30,11 @@ namespace AttaxxPlus.ViewModel
             FieldViewModel current = parameter as FieldViewModel;
 
             // Clicking own field selects that field.
+            // 2. feladat itt dob null execute-t
             if (current.Owner == vm.CurrentPlayer)
             {
+                // 3. feladat mező kijelölés (debug gyakorlás)
+                //current.IsSelected=true;
                 vm.SelectedField = current;
                 return;
             }
