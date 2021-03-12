@@ -8,12 +8,12 @@ namespace AttaxxPlus.View
     public class IsSelected2BrushConverter : IValueConverter
     {
         // EVIP: reusing brushes, named constants
-        readonly private static SolidColorBrush yellow = new SolidColorBrush(Colors.Yellow);
-        readonly private static SolidColorBrush gray = new SolidColorBrush(Colors.Gray);
+        readonly private static SolidColorBrush azure = new SolidColorBrush(Colors.Azure); // if it is selected
+        readonly private static SolidColorBrush gray = new SolidColorBrush(Colors.Gray); // if it is not selected
 
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            return ((bool)value) ? yellow : gray;
+            return ((bool)value) ? azure : gray;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
