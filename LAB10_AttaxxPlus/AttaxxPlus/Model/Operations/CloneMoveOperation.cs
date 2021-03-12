@@ -15,8 +15,10 @@ namespace AttaxxPlus.Model.Operations
 
             // Note: selectedField is always the players own field...
             // EVIP: IsEmpty() is more descriptive than "Owner == 0"
-            if (Math.Abs(selectedField.Row - currentField.Row)
-                + Math.Abs(selectedField.Column - currentField.Column) == 1
+            // 4. feladat átlós lépés
+           
+            if ((Math.Abs(selectedField.Row - currentField.Row) <= 1)
+                && (Math.Abs(selectedField.Column - currentField.Column) <= 1
                 && !selectedField.IsEmpty()
                 && currentField.IsEmpty())
             {
