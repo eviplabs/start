@@ -1,3 +1,8 @@
+Név: Kukó Gergely RW6IZX
+VIAUMB03 SDE10
+
+
+
 # AttaxxPlus Labor
 
 Ezen a laboron az AttaxxPlus mintaalkalmazást kell továbbfejleszteni.
