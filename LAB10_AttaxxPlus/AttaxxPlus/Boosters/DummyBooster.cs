@@ -33,6 +33,8 @@ namespace AttaxxPlus.Boosters
 
         public override void InitializeGame()
         {
+            Array.Fill(usableCounter, 2);
+            Notify(nameof(Title));
         }
 
         public override bool TryExecute(Field selectedField, Field currentField)
