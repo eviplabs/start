@@ -13,11 +13,27 @@ namespace AttaxxPlus.Boosters
 
         public SurrenderBooster() : base()
         {
+            LoadImage(new Uri(@"ms-appx:///Boosters/SurrenderBooster.png"));
         }
 
         public override bool TryExecute(Field selectedField, Field currentField)
         {
-            return false;
+            foreach (var i in GameViewModel.Model.Fields)
+            {
+                if(i.IsEmpty())
+                {
+                    if(GameViewModel.Model.CurrentPlayer == 1)
+                    {
+                        i.Owner = 2;
+                    }
+                        
+                    else
+                    {
+                        i.Owner = 1;
+                    }
+                }
+            }
+            return true;
         }
     }
 }

@@ -13,7 +13,11 @@ namespace AttaxxPlus.View
         readonly private static SolidColorBrush red = new SolidColorBrush(Colors.Coral);
         readonly private static SolidColorBrush blue = new SolidColorBrush(Colors.CornflowerBlue);
         readonly private static SolidColorBrush gray = new SolidColorBrush(Colors.LightGray);
-        readonly private static SolidColorBrush[] burshes = new [] { gray, red, blue };
+        //readonly private static SolidColorBrush[] burshes = new[] { gray, red, blue };
+
+        readonly private static SolidColorBrush pink = new SolidColorBrush(Colors.LightPink);
+        readonly private static SolidColorBrush lightblue = new SolidColorBrush(Colors.LightSkyBlue);
+        readonly private static SolidColorBrush[] burshes = new[] { gray, lightblue, pink };
 
         public object Convert(object value, Type targetType, object parameter, string language)
         {
