@@ -121,6 +121,7 @@
     </Compile>
     <Compile Include="Boosters\BoosterBase.cs" />
     <Compile Include="Boosters\DummyBooster.cs" />
+    <Compile Include="Boosters\EmptizeBooster.cs" />
     <Compile Include="Boosters\IBooster.cs" />
     <Compile Include="Boosters\SurrenderBooster.cs" />
     <Compile Include="MainPage.xaml.cs">
