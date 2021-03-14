@@ -1,5 +1,6 @@
 ﻿using ItemsControlMvvmDemo.Model;
 using System.Linq;
+using System;
 
 namespace ItemsControlMvvmDemo.ViewModel
 {
