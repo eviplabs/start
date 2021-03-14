@@ -4,8 +4,8 @@ Erről a repositoryról készülnek a hallgatói személyes másolatok a classro
 A repository private, a tárgy oktatóin kívül más nem láthatja.
 Az egyértelmű azonosíthatóság érdekében kérünk, add meg az alábbiakat:
 
-## NÉV: 
-## Neptun-kód: 
+## NÉV: Schmidl Gergő
+## Neptun-kód: H9JJLJ
 ## Kurzus: 
 
 # Hasznos linkek 
