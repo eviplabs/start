@@ -3,6 +3,13 @@ using AttaxxPlus.Model;
 
 namespace AttaxxPlus.Boosters
 {
+
+    static class MyConstants
+    {
+        public const byte numberOfPlayers = 2;
+        public const byte numberOfDummyBooster = 2;
+
+    }
     /// <summary>
     /// Booster not doing anything. (But activating it takes a turn.)
     /// Features a player-independent counter to limit the number of activations.
@@ -10,10 +17,11 @@ namespace AttaxxPlus.Boosters
     public class DummyBooster : BoosterBase
     {
         // How many times can the user activate this booster
-        private int usableCounter = 2;
+        //private int usableCounter = 2;
+        private int[] usableCounter = new int[4];
 
         // EVIP: overriding abstract property in base class.
-        public override string Title { get => $"Dummy ({usableCounter})"; }
+        public override string Title { get => $"Dummy ({usableCounter[this.GameViewModel.CurrentPlayer]})"; }
 
         public DummyBooster()
             : base()
@@ -33,15 +41,19 @@ namespace AttaxxPlus.Boosters
 
         public override void InitializeGame()
         {
-            usableCounter = 2;
+            //Indexelés miatt kell plusz 1
+            for(int i = 1; i < MyConstants.numberOfPlayers + 1; i++)
+            {
+                usableCounter[i] = MyConstants.numberOfDummyBooster;
+            }
         }
 
         public override bool TryExecute(Field selectedField, Field currentField)
         {
             // Note: if you need a player-dependent counter, use this.GameViewModel.CurrentPlayer.
-            if (usableCounter > 0)
+            if (usableCounter[this.GameViewModel.CurrentPlayer] > 0)
             {
-                usableCounter--;
+                usableCounter[this.GameViewModel.CurrentPlayer]--;
                 Notify(nameof(Title));
                 return true;
             }
