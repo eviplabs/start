@@ -4,12 +4,7 @@ using AttaxxPlus.Model;
 namespace AttaxxPlus.Boosters
 {
 
-    static class MyConstants
-    {
-        public const byte numberOfPlayers = 2;
-        public const byte numberOfDummyBooster = 2;
 
-    }
     /// <summary>
     /// Booster not doing anything. (But activating it takes a turn.)
     /// Features a player-independent counter to limit the number of activations.
@@ -23,8 +18,7 @@ namespace AttaxxPlus.Boosters
         // EVIP: overriding abstract property in base class.
         public override string Title { get => $"Dummy ({usableCounter[this.GameViewModel.CurrentPlayer]})"; }
 
-        public DummyBooster()
-            : base()
+        public DummyBooster() : base()
         {
             // EVIP: referencing content resource with Uri.
             //  The image is added to the project as "Content" build action.
