@@ -10,7 +10,7 @@ namespace AttaxxPlus.Boosters
     public class DummyBooster : BoosterBase
     {
         // How many times can the user activate this booster
-        private int[] usableCounter = { 2,2,2 };
+        private int[] usableCounter = { 2,2,2,2 };
 
         // EVIP: overriding abstract property in base class.
         public override string Title { get => $"Dummy ({usableCounter[GameViewModel.CurrentPlayer] })"; }

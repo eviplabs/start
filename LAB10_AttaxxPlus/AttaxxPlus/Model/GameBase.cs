@@ -60,13 +60,28 @@ namespace AttaxxPlus.Model
         {
             if (!CheckGameOver())
             {
-                if (CurrentPlayer < NumberOfPlayers)
-                    CurrentPlayer++;
-                else
-                    CurrentPlayer = 1;
+                //next player who has field
+                do
+                {
+                    if (CurrentPlayer < NumberOfPlayers)
+                        CurrentPlayer++;
+                    else
+                        CurrentPlayer = 1;
+                } while (!CheckPlayerHasField(CurrentPlayer)); 
             }
         }
+        private bool CheckPlayerHasField(int player)
+        {
+            foreach (var f in Fields)
+            {
+                if (f.Owner == player)
+                {
+                        return true;
+                }
+            }
 
+            return false;
+        }
         private bool CheckGameOver()
         {
             Winner = null;  // Game can have been reinitialized since last check.

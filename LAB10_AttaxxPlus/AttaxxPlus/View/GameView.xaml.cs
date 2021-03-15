@@ -12,7 +12,9 @@ namespace AttaxxPlus.View
         public GameView()
         {
             this.InitializeComponent();
-            ViewModel = new GameViewModel(new SimpleGame(5));
+            //ViewModel = new GameViewModel(new SimpleGame(5));
+            ViewModel = new GameViewModel(new ThreePlayerGame(5));
+
         }
     }
 }
