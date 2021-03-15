@@ -30,9 +30,7 @@ namespace AttaxxPlus.Boosters
                     f.Owner = otherPlayer;
                 }
             }
-            GameViewModel.EndOfTurn();
-
-            return false;
+            return true;
         }
     }
 }
