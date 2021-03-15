@@ -17,7 +17,7 @@ namespace AttaxxPlus.Boosters
     public class DummyBooster : BoosterBase
     {
         // How many times can the user activate this booster
-        //private int usableCounter = 2;
+        //Max 4 játékosig
         private int[] usableCounter = new int[4];
 
         // EVIP: overriding abstract property in base class.
