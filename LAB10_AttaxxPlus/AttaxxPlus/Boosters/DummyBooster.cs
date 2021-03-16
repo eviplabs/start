@@ -42,7 +42,7 @@ namespace AttaxxPlus.Boosters
         public override bool TryExecute(Field selectedField, Field currentField)
         {
             // Note: if you need a player-dependent counter, use this.GameViewModel.CurrentPlayer.
-            if (usableCounter[this.GameViewModel.CurrentPlayer] > 0)
+            if (usableCounter[this.GameViewModel.CurrentPlayer] >0)
             {
                 usableCounter[this.GameViewModel.CurrentPlayer]--;
                 Notify(nameof(Title));
