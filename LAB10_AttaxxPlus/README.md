@@ -18,13 +18,15 @@ A mezők megjelenítését a View/GameView.xaml írja le. Itt minden mező egy n
 ## 2. feladat: a StaticResource kulcsok (debug gyakorlás)
 
 Mi van, ha egy StaticResource kulcsát átírjuk? Például a GameView.xaml-ben a OwnerIndex2BrushConverter kulcsot valami más értékre. Hol és milyen hiba jön? Miért nem jött elő fordítási időben? Ezt próbáld ki, hogy ha majd ilyen hibával találkozol, könnyebben felismerd! Utána írd vissza a kulcsot és mehetsz is tovább.
-
+Ez a hiba keletkezett {"Meghatározatlan hiba\r\n\r\nCannot find a resource with the given key: OwnerIndex2BrushConverter_bad."}
+Google keresés után: Static resource references are evaluated at XAML load time. The order in which individual XAML components are loaded is important.
 ## 3. feladat: mező kijelölés (debug gyakorlás)
 
 Ebben a feladatban megint egy lehetséges hibaforrást kell megvizsgálni, ezzel gyakorolva a működés követését és a debuggolást.
 
 A FieldCommand.Execute-ban a "vm.SelectedField = current;" helyett miért nem elég a "current.IsSelected=true;"? A megoldáshoz meg kell nézni az IsSelected propertyt, és hogy mi történik, amikor ennek értéket adunk. Lehet, hogy nem csak egy értékadás fut le, hanem valami más is...
-
+Azért nem jó a második megoldás, mert abban az esetben a régi mező isSelected értéke nem frissül (false-ra), valamint a GamViewModel-ben se jut érvényre hogy mi a kiválasztott mező,azaz a private változójába
+nem kerül bele az új érték és nem hívódik meg a Notify() metódus sem.
 ## 4. feladat: átlós lépés
 
 A kiadott játékban van egy hiba: az eredeti szabályok szerint a szomszéd mezőre lépéskor átlósan is lehet lépni, most azonban csak lapjával szomszédos mezőre lehetséges. A feladat a hiba kijavítása. 
