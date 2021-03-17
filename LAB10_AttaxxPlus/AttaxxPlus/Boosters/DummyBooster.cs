@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using AttaxxPlus.Model;
 
 namespace AttaxxPlus.Boosters
@@ -45,7 +45,7 @@ namespace AttaxxPlus.Boosters
                 Notify(nameof(Title));
                 return true;
             }
-            return true;
+            return false;
         }
     }
 }
