@@ -28,7 +28,7 @@ namespace AttaxxPlus.Boosters
                 {
                     if (base.GameViewModel.Fields[i][j].Owner == 0)
                     {
-                        var test = base.GameViewModel.Model.Fields[i, j].Owner = enemyColor;
+                        base.GameViewModel.Model.Fields[i, j].Owner = enemyColor;
                     }
                 }
             }
