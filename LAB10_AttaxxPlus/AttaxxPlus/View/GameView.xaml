@@ -13,6 +13,7 @@
     <!--EVIP: xaml resources -->
     <UserControl.Resources>
         <local:OwnerIndex2BrushConverter x:Key="OwnerIndex2BrushConverter"/>
+        <!--<local:OwnerIndex2BrushConverter x:Key="OwnerIndex2BrushConverter2"/>-->
         <local:IsSelected2BrushConverter x:Key="IsSelected2BrushConverter"/>
     </UserControl.Resources>
 
