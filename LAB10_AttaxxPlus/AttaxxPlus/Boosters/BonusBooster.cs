@@ -10,7 +10,7 @@ namespace AttaxxPlus.Boosters
     //csak egyszer használható
     public class BonusBooster : BoosterBase
     {
-        public override string Title => "Surrender";
+        public override string Title => "Bonus";
 
         private int[] usableCounters = new int[] {1,1};
 
