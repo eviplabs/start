@@ -57,9 +57,13 @@ namespace AttaxxPlus.Boosters
 
         private void GameViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "CurrentPlayer")
-                this.CurrentPlayerChanged();
-        }
+			if (e.PropertyName == "CurrentPlayer") {
+				this.CurrentPlayerChanged();
+			}
+			if (e.PropertyName == "Winner") {
+				this.WinnerChanged();
+			}
+		}
 
         public abstract bool TryExecute(Field selectedField, Field currentField);
 
@@ -68,7 +72,14 @@ namespace AttaxxPlus.Boosters
         //  so override is not mandatory.
         public virtual void InitializeGame() { }
 
-        // Called when GameViewModel.CurrentPlayer has changed.
-        protected virtual void CurrentPlayerChanged() { }
-    }
+		// Called when GameViewModel.CurrentPlayer has changed.
+		protected virtual void CurrentPlayerChanged() { }
+
+		// Called when GameViewModel.Winner has changed. Useful to reset booster counters.
+		protected virtual void WinnerChanged() {
+			if (GameViewModel.Winner == null) {
+				InitializeGame();
+			}
+		}
+	}
 }

@@ -27,14 +27,14 @@ namespace AttaxxPlus.Boosters
             LoadImage(new Uri(@"ms-appx:///Boosters/DummyBooster.png"));
         }
 
-        protected override void CurrentPlayerChanged()
-        {
-            base.CurrentPlayerChanged();
-            Notify(nameof(this.Title));
-        }
+		protected override void CurrentPlayerChanged() {
+			base.CurrentPlayerChanged();
+			Notify(nameof(this.Title));
+		}
 
 		public override void InitializeGame() {
 			usableCounter = Enumerable.Repeat(2, GameViewModel.Model.NumberOfPlayers + 1).ToArray();
+			Notify(nameof(Title));
 		}
 
         public override bool TryExecute(Field selectedField, Field currentField)
