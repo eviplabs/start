@@ -19,6 +19,12 @@ A mezők megjelenítését a View/GameView.xaml írja le. Itt minden mező egy n
 
 Mi van, ha egy StaticResource kulcsát átírjuk? Például a GameView.xaml-ben a OwnerIndex2BrushConverter kulcsot valami más értékre. Hol és milyen hiba jön? Miért nem jött elő fordítási időben? Ezt próbáld ki, hogy ha majd ilyen hibával találkozol, könnyebben felismerd! Utána írd vissza a kulcsot és mehetsz is tovább.
 
+Futás idejű hiba:
+Exception thrown: 'System.Runtime.InteropServices.COMException' in System.Private.CoreLib.dll
+WinRT information: Cannot find a resource with the given key: OwnerIndex2BrushConverter.
+
+Azért nem fordítás idejű hiba, mert "Static resource references are evaluated at XAML load time. - "https://docs.microsoft.com/en-us/previous-versions/windows/silverlight/dotnet-windows-silverlight/gg181270(v=vs.95)?redirectedfrom=MSDN
+
 ## 3. feladat: mező kijelölés (debug gyakorlás)
 
 Ebben a feladatban megint egy lehetséges hibaforrást kell megvizsgálni, ezzel gyakorolva a működés követését és a debuggolást.
