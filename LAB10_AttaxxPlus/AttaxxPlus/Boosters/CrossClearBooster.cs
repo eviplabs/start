@@ -15,7 +15,7 @@ namespace AttaxxPlus.Boosters
 
     public CrossClearBooster() : base()
         {
-            //LoadImage(new Uri(@"ms-appx:///Boosters/SurrenderBooster.png"));
+            LoadImage(new Uri(@"ms-appx:///Boosters/CrossClearBooster.png"));
         }
 
         protected override void CurrentPlayerChanged()
