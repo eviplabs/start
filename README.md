@@ -4,9 +4,9 @@ Erről a repositoryról készülnek a hallgatói személyes másolatok a classro
 A repository private, a tárgy oktatóin kívül más nem láthatja.
 Az egyértelmű azonosíthatóság érdekében kérünk, add meg az alábbiakat:
 
-## NÉV: 
-## Neptun-kód: 
-## Kurzus: 
+## NÉV: Babud Lia Erika
+## Neptun-kód: LL9L9D
+## Kurzus: CDE1
 
 # Hasznos linkek 
 
