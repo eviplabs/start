@@ -14,11 +14,22 @@ namespace AttaxxPlus.Boosters
 
         public SurrenderBooster(GameViewModel gvm) : base(gvm)
         {
-        }
+			LoadImage(new Uri(@"ms-appx:///Boosters/SurrenderBooster.png"));
+		}
 
         public override bool TryExecute(Field selectedField, Field currentField)
         {
-            return false;
+			if (GameViewModel.Model.NumberOfPlayers > 2) {
+				return false; // Cannot surrender when there are more than 3 players
+			}
+			foreach (var f in GameViewModel.Model.Fields) {
+				if (f.Owner == 0) {
+					// currPlayer = 2 -> f.Owner = 1
+					// currPlayer = 1 -> f.Owner = 2
+					f.Owner = 3 - GameViewModel.Model.CurrentPlayer;
+				}
+			}
+			return true;
         }
     }
 }
