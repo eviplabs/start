@@ -1,4 +1,4 @@
-﻿using AttaxxPlus.Boosters;
+using AttaxxPlus.Boosters;
 using AttaxxPlus.Model;
 using System;
 using System.Collections.ObjectModel;
@@ -24,6 +24,7 @@ namespace AttaxxPlus.ViewModel
                 // EVIP: using reflection to instantiate objects
                 IBooster booster = Activator.CreateInstance(boosterType.AsType()) as IBooster;
                 booster.GameViewModel = gameViewModel;
+                Boosters.Add(booster);
             }
         }
     }
