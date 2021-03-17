@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq;
 using AttaxxPlus.Model;
+using AttaxxPlus.ViewModel;
 
 namespace AttaxxPlus.Boosters
 {
@@ -10,13 +12,13 @@ namespace AttaxxPlus.Boosters
     public class DummyBooster : BoosterBase
     {
         // How many times can the user activate this booster
-        private int usableCounter = 2;
+        private int[] usableCounter;
 
         // EVIP: overriding abstract property in base class.
-        public override string Title { get => $"Dummy ({usableCounter})"; }
+        public override string Title { get => $"Dummy ({usableCounter[GameViewModel.CurrentPlayer]})"; }
 
-        public DummyBooster()
-            : base()
+        public DummyBooster(GameViewModel gvm)
+            : base(gvm)
         {
             // EVIP: referencing content resource with Uri.
             //  The image is added to the project as "Content" build action.
@@ -31,17 +33,16 @@ namespace AttaxxPlus.Boosters
             Notify(nameof(this.Title));
         }
 
-        public override void InitializeGame()
-        {
-            usableCounter = 2;
-        }
+		public override void InitializeGame() {
+			usableCounter = Enumerable.Repeat(2, GameViewModel.Model.NumberOfPlayers + 1).ToArray();
+		}
 
         public override bool TryExecute(Field selectedField, Field currentField)
         {
             // Note: if you need a player-dependent counter, use this.GameViewModel.CurrentPlayer.
-            if (usableCounter > 0)
+            if (usableCounter[GameViewModel.CurrentPlayer] > 0)
             {
-                usableCounter--;
+                usableCounter[GameViewModel.CurrentPlayer]--;
                 Notify(nameof(Title));
                 return true;
             }

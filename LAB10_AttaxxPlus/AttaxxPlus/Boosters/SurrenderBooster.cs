@@ -1,5 +1,6 @@
 ﻿using System;
 using AttaxxPlus.Model;
+using AttaxxPlus.ViewModel;
 
 namespace AttaxxPlus.Boosters
 {
@@ -11,7 +12,7 @@ namespace AttaxxPlus.Boosters
         // EVIP: compact override of getter for Title returning constant.
         public override string Title => "Surrender";
 
-        public SurrenderBooster() : base()
+        public SurrenderBooster(GameViewModel gvm) : base(gvm)
         {
         }
 
