@@ -32,6 +32,12 @@ namespace AttaxxPlus.ViewModel
             // Clicking own field selects that field.
             if (current.Owner == vm.CurrentPlayer)
             {
+				//3. Feladat
+				//A current.Isselected = true segítségével csak az adott mezÖt választjuk ki
+	            //	
+         		//Ha a SelectField propertynek adjuk át az aktuális mezöt,
+				//Akkor egyrészt az elözö mezöt deselectálja (Isselected = false)
+				//meghívja a Notify() függvényt
                 vm.SelectedField = current;
                 return;
             }

@@ -15,8 +15,13 @@ namespace AttaxxPlus.Model.Operations
 
             // Note: selectedField is always the players own field...
             // EVIP: IsEmpty() is more descriptive than "Owner == 0"
-            if (Math.Abs(selectedField.Row - currentField.Row)
-                + Math.Abs(selectedField.Column - currentField.Column) == 1
+			//4. Feladat
+			//if-ben a hiba, ha sor-t és oszlopot is váltunk akkor nem teljesül a feltétel
+            int deltarow = Math.Abs(selectedField.Row - currentField.Row);
+			int deltacolumn = Math.Abs(selectedField.Column - currentField.Column);
+			if ((deltarow + deltacolumn > 0)
+				&& (deltarow < 2)
+			    && (deltacolumn < 2)
                 && !selectedField.IsEmpty()
                 && currentField.IsEmpty())
             {
