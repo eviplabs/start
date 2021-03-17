@@ -18,15 +18,9 @@ namespace AttaxxPlus.Boosters
 
         public override bool TryExecute(Field selectedField, Field currentField)
         {
-            var valami = base.GameViewModel.Fields.Count;
-
             var rows = base.GameViewModel.Model.Fields.GetLength(0);
             var columns = base.GameViewModel.Model.Fields.GetLength(0);
-
-            var pixel = base.GameViewModel.Fields[1][1];
             int enemyColor = (base.GameViewModel.CurrentPlayer == 1) ? 2 : 1;
-
-            
 
             for (int i = 0; i < rows; i++)
             {
@@ -38,10 +32,6 @@ namespace AttaxxPlus.Boosters
                     }
                 }
             }
-
-            //base.GameViewModel.Fields = new ObservableCollection<FieldViewModelList>();
-            //base.GameViewModel.Model
-
             return true;
         }
     }
