@@ -1,12 +1,12 @@
-# EViP - Eseményvezérelt és Vizuális Programozás (VIAUBB01)
+﻿# EViP - Eseményvezérelt és Vizuális Programozás (VIAUBB01)
 
 Erről a repositoryról készülnek a hallgatói személyes másolatok a classroom.github.com segítségével.
 A repository private, a tárgy oktatóin kívül más nem láthatja.
 Az egyértelmű azonosíthatóság érdekében kérünk, add meg az alábbiakat:
 
-## NÉV: 
-## Neptun-kód: 
-## Kurzus: 
+## NÉV: Tibély Orsolya Sára, Hartyányi Gábor (CDE7 merocsoport)
+## Neptun-kód: CIF2LT, D3XP4L
+## Kurzus: L1
 
 # Hasznos linkek 
 
