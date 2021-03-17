@@ -32,7 +32,8 @@ namespace AttaxxPlus.ViewModel
             // Clicking own field selects that field.
             if (current.Owner == vm.CurrentPlayer)
             {
-                vm.SelectedField = current;
+                //vm.SelectedField = current;
+                current.IsSelected = true;
                 return;
             }
 
