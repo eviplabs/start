@@ -19,7 +19,7 @@ namespace AttaxxPlus.Boosters
         public EmptyBooster()
             : base()
         {
-
+            LoadImage(new Uri(@"ms-appx:///Assets/emptybooster_logo.jpg"));
         }
 
         protected override void CurrentPlayerChanged()
