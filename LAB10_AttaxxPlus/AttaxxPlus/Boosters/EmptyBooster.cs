@@ -35,6 +35,11 @@ namespace AttaxxPlus.Boosters
 
         public override bool TryExecute(Field selectedField, Field currentField)
         {
+            if(selectedField is null)
+            {
+                return false;
+            }
+
             if (usableCounter[GameViewModel.CurrentPlayer] > 0 && selectedField.Owner == GameViewModel.CurrentPlayer)
             {
                 usableCounter[GameViewModel.CurrentPlayer]--;
