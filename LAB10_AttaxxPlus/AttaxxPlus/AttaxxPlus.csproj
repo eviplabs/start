@@ -120,6 +120,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Boosters\BoosterBase.cs" />
+    <Compile Include="Boosters\ClearCrossBooster.cs" />
     <Compile Include="Boosters\DummyBooster.cs" />
     <Compile Include="Boosters\IBooster.cs" />
     <Compile Include="Boosters\SurrenderBooster.cs" />
