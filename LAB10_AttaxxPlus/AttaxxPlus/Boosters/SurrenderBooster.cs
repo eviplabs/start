@@ -13,11 +13,36 @@ namespace AttaxxPlus.Boosters
 
         public SurrenderBooster() : base()
         {
+            LoadImage(new Uri(@"ms-appx:///Boosters/SurrenderBooster.png"));
         }
 
         public override bool TryExecute(Field selectedField, Field currentField)
         {
-            return false;
+            var valami = base.GameViewModel.Fields.Count;
+
+            var rows = base.GameViewModel.Model.Fields.GetLength(0);
+            var columns = base.GameViewModel.Model.Fields.GetLength(0);
+
+            var pixel = base.GameViewModel.Fields[1][1];
+            int enemyColor = (base.GameViewModel.CurrentPlayer == 1) ? 2 : 1;
+
+            
+
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < columns; j++)
+                {
+                    if (base.GameViewModel.Fields[i][j].Owner == 0)
+                    {
+                        var test = base.GameViewModel.Model.Fields[i, j].Owner = enemyColor;
+                    }
+                }
+            }
+
+            //base.GameViewModel.Fields = new ObservableCollection<FieldViewModelList>();
+            //base.GameViewModel.Model
+
+            return true;
         }
     }
 }
