@@ -6,8 +6,6 @@ namespace AttaxxPlus.Model
     public class AIGame : GameBase
     {
 		private readonly int AI_PLAYER_IDX = 2;
-		private readonly CloneMoveOperation cloneMove;
-		private readonly JumpOperation jump;
 
 		public AIGame(int size) : base()
         {
@@ -20,9 +18,6 @@ namespace AttaxxPlus.Model
             // EVIP: setting property with protected setter
             NumberOfPlayers = 2;
 			base.PropertyChanged += GameBase_PropertyChanged;
-
-			cloneMove = new CloneMoveOperation(this);
-			jump = new JumpOperation(this);
 
 			InitializeGame();
         }
@@ -37,32 +32,12 @@ namespace AttaxxPlus.Model
 
 		private void RunAI() {
 			// We could do much better by evaluating multiple steps in the future.
-			int maxScore = 0;
-			Field maxScoreSource = null;
-			Field maxScoreTarget = null;
-			foreach (var selField in Fields) {
-				if (selField.Owner == AI_PLAYER_IDX) {
-					foreach (var currField in Fields) {
-						int tmpScore = cloneMove.GetExecutionScore(selField, currField);
-						if (tmpScore > maxScore) {
-							maxScore = tmpScore;
-							maxScoreSource = selField;
-							maxScoreTarget = currField;
-						}
-						tmpScore = jump.GetExecutionScore(selField, currField);
-						if (tmpScore > maxScore) {
-							maxScore = tmpScore;
-							maxScoreSource = selField;
-							maxScoreTarget = currField;
-						}
-					}
-				}
-			}
+			(var source, var target, var score) = GetBestMove(AI_PLAYER_IDX);
 
-			if (jump.GetExecutionScore(maxScoreSource, maxScoreTarget) > cloneMove.GetExecutionScore(maxScoreSource, maxScoreTarget)) {
-				jump.TryExecute(maxScoreSource, maxScoreTarget);
+			if (jump.GetExecutionScore(source, target) > cloneMove.GetExecutionScore(source, target)) {
+				jump.TryExecute(source, target);
 			} else {
-				cloneMove.TryExecute(maxScoreSource, maxScoreTarget);
+				cloneMove.TryExecute(source, target);
 			}
 
 			EndOfTurn();

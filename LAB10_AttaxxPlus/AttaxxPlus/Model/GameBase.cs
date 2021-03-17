@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using AttaxxPlus.Model.Operations;
+using System.Linq;
 
 namespace AttaxxPlus.Model
 {
@@ -8,9 +9,14 @@ namespace AttaxxPlus.Model
     /// </summary>
     public abstract class GameBase : ObservableObject
     {
-        public GameBase()
+		protected readonly CloneMoveOperation cloneMove;
+		protected readonly JumpOperation jump;
+
+		public GameBase()
         {
-        }
+			cloneMove = new CloneMoveOperation(this);
+			jump = new JumpOperation(this);
+		}
 
         public abstract void InitializeGame();
 
@@ -67,6 +73,31 @@ namespace AttaxxPlus.Model
             }
         }
 
+		protected (Field, Field, int) GetBestMove(int currPlayer) {
+			int maxScore = -1;
+			Field maxScoreSource = null;
+			Field maxScoreTarget = null;
+			foreach (var selField in Fields) {
+				if (selField.Owner == currPlayer) {
+					foreach (var currField in Fields) {
+						int tmpScore = cloneMove.GetExecutionScore(selField, currField);
+						if (tmpScore > maxScore) {
+							maxScore = tmpScore;
+							maxScoreSource = selField;
+							maxScoreTarget = currField;
+						}
+						tmpScore = jump.GetExecutionScore(selField, currField);
+						if (tmpScore > maxScore) {
+							maxScore = tmpScore;
+							maxScoreSource = selField;
+							maxScoreTarget = currField;
+						}
+					}
+				}
+			}
+			return (maxScoreSource, maxScoreTarget, maxScore);
+		}
+
         private bool CheckGameOver()
         {
             Winner = null;  // Game can have been reinitialized since last check.
@@ -102,7 +133,20 @@ namespace AttaxxPlus.Model
                     ? playerWithMaxFields : 0;
                 return true;
             }
-            return false;
+
+			int numPlayersWithPossibleMoves = 0;
+			for (int playerIdx = 1; playerIdx <= NumberOfPlayers; playerIdx++) {
+				(var _, var _, int score) = GetBestMove(playerIdx);
+				if (score != -1) {
+					numPlayersWithPossibleMoves++;
+				}
+			}
+			if (numPlayersWithPossibleMoves <= 1) {
+				Winner = playerWithMaxFields;
+				return true;
+			}
+
+			return false;
         }
     }
 }
