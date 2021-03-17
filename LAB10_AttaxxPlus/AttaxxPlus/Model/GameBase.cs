@@ -64,6 +64,8 @@ namespace AttaxxPlus.Model
                     CurrentPlayer++;
                 else
                     CurrentPlayer = 1;
+                if (!PlayerHasMove())
+                    EndOfTurn();
             }
         }
 
@@ -102,6 +104,14 @@ namespace AttaxxPlus.Model
                     ? playerWithMaxFields : 0;
                 return true;
             }
+            return false;
+        }
+
+        private bool PlayerHasMove()
+        {
+            foreach (var f in Fields)
+                if (f.Owner == currentPlayer)
+                    return true;
             return false;
         }
     }

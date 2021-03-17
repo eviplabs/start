@@ -21,6 +21,7 @@ namespace AttaxxPlus.Boosters
                     gameViewModel.PropertyChanged -= GameViewModel_PropertyChanged;
                 gameViewModel = value;
                 gameViewModel.PropertyChanged += GameViewModel_PropertyChanged;
+                InitializeGame();
             }
         }
 
@@ -35,7 +36,7 @@ namespace AttaxxPlus.Boosters
 
         public BoosterBase()
         {
-            InitializeGame();
+
         }
 
         public void Execute(object parameter)

@@ -10,8 +10,7 @@ namespace AttaxxPlus.Boosters
     public class ExterminateBooster : BoosterBase
     {
         // How many times can the user activate this booster
-        private int[] usableCounter = { 0, 1, 1 };
-
+        private int[] usableCounter;
         // EVIP: overriding abstract property in base class.
         public override string Title { get => $"Exterminate ({usableCounter[this.GameViewModel.CurrentPlayer]})"; }
 
@@ -33,7 +32,8 @@ namespace AttaxxPlus.Boosters
 
         public override void InitializeGame()
         {
-            usableCounter = new int[]{ 0, 1, 1 };
+            usableCounter = new int[this.GameViewModel.Model.NumberOfPlayers + 1];
+            Array.Fill(usableCounter, 2);
         }
 
         public override bool TryExecute(Field selectedField, Field currentField)
