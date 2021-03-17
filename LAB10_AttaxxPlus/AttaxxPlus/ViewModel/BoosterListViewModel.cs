@@ -1,4 +1,4 @@
-using AttaxxPlus.Boosters;
+﻿using AttaxxPlus.Boosters;
 using AttaxxPlus.Model;
 using System;
 using System.Collections.ObjectModel;
