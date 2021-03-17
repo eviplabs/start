@@ -44,6 +44,11 @@ namespace AttaxxPlus.ViewModel
             }
         }
 
+        /*private void initBoostersBasedOnModel()
+        { 
+            
+        }*/
+
         // EVIP: property with further setter responsibilities.
         private FieldViewModel selectedField;
         public FieldViewModel SelectedField
