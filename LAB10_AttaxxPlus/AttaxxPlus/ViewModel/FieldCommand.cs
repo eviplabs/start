@@ -33,7 +33,7 @@ namespace AttaxxPlus.ViewModel
             if (current.Owner == vm.CurrentPlayer)
             {
                 current.IsSelected = true;
-                vm.SelectedField = current;
+                //vm.SelectedField = current;
                 return;
             }
 
