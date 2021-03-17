@@ -12,8 +12,9 @@ namespace AttaxxPlus.View
         //  using array instead of switch in Convert.
         readonly private static SolidColorBrush red = new SolidColorBrush(Colors.Coral);
         readonly private static SolidColorBrush blue = new SolidColorBrush(Colors.CornflowerBlue);
-        readonly private static SolidColorBrush gray = new SolidColorBrush(Colors.LightGray);
-        readonly private static SolidColorBrush[] burshes = new [] { gray, red, blue };
+		readonly private static SolidColorBrush gray = new SolidColorBrush(Colors.LightGray);
+		readonly private static SolidColorBrush green = new SolidColorBrush(Colors.Green);
+		readonly private static SolidColorBrush[] burshes = new [] { gray, red, blue, green };
 
         public object Convert(object value, Type targetType, object parameter, string language)
         {

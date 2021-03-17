@@ -20,7 +20,7 @@ namespace AttaxxPlus.Boosters
         public override bool TryExecute(Field selectedField, Field currentField)
         {
 			if (GameViewModel.Model.NumberOfPlayers > 2) {
-				return false; // Cannot surrender when there are more than 3 players
+				return true; // Cannot surrender when there are more than 3 players, go to next player
 			}
 			foreach (var f in GameViewModel.Model.Fields) {
 				if (f.Owner == 0) {
