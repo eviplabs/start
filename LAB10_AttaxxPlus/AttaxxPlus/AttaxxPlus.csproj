@@ -134,6 +134,7 @@
     <Compile Include="Model\Operations\IOperation.cs" />
     <Compile Include="Model\Operations\JumpOperation.cs" />
     <Compile Include="Model\Operations\OperationBase.cs" />
+    <Compile Include="Model\AIGame.cs" />
     <Compile Include="Model\TriGame.cs" />
     <Compile Include="Model\SimpleGame.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

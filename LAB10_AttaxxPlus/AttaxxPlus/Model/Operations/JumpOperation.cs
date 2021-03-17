@@ -29,5 +29,21 @@ namespace AttaxxPlus.Model.Operations
             ChangeOwnerOfOccupiedFieldsAroundField(currentField);
             return true;
         }
-    }
+
+		public override int GetExecutionScore(Field selectedField, Field currentField) {
+			if (selectedField == null)
+				return -1;
+			int deltaRow = Math.Abs(selectedField.Row - currentField.Row);
+			int deltaCol = Math.Abs(selectedField.Column - currentField.Column);
+			if (deltaRow != 0 && deltaCol != 0)
+				return -1;
+			if (deltaRow != 2 && deltaCol != 2)
+				return -1;
+			if (selectedField.Owner == 0)
+				return -1;
+			if (currentField.Owner != 0)
+				return -1;
+			return GetChangeOwnerOfOccupiedFieldsAroundFieldScore(currentField);
+		}
+	}
 }

@@ -27,5 +27,20 @@ namespace AttaxxPlus.Model.Operations
             }
             return false;
         }
-    }
+
+		public override int GetExecutionScore(Field selectedField, Field currentField) {
+			if (selectedField == null)
+				return -1;
+
+			// Note: selectedField is always the players own field...
+			// EVIP: IsEmpty() is more descriptive than "Owner == 0"
+			if (Math.Sqrt(Math.Pow(selectedField.Row - currentField.Row, 2)
+				+ Math.Pow(selectedField.Column - currentField.Column, 2)) < 2
+				&& !selectedField.IsEmpty()
+				&& currentField.IsEmpty()) {
+				return GetChangeOwnerOfOccupiedFieldsAroundFieldScore(currentField) + 1; // +1 for clone operation
+			}
+			return -1;
+		}
+	}
 }

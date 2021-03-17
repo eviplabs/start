@@ -75,12 +75,19 @@ namespace AttaxxPlus.Boosters
 			}
 		}
 
-        public abstract bool TryExecute(Field selectedField, Field currentField);
+		public abstract bool TryExecute(Field selectedField, Field currentField);
 
-        // EVIP: virtual method and not abstract.
-        // It has a default not doing anything,
-        //  so override is not mandatory.
-        public virtual void InitializeGame() {
+		public virtual int GetExecutionScore(Field selectedField, Field currentField) {
+			if (usableCounter[GameViewModel.CurrentPlayer] > 0) {
+				return 0;
+			}
+			return -1;
+		}
+
+		// EVIP: virtual method and not abstract.
+		// It has a default not doing anything,
+		//  so override is not mandatory.
+		public virtual void InitializeGame() {
 			usableCounter = Enumerable.Repeat(initialUsableCounter, GameViewModel.Model.NumberOfPlayers + 1).ToArray();
 		}
 
