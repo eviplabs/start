@@ -13,10 +13,14 @@ namespace AttaxxPlus.Model.Operations
             if (selectedField == null)
                 return false;
 
+            bool atlo = (Math.Abs(selectedField.Row - currentField.Row) == 1) && (Math.Abs(selectedField.Column - currentField.Column) == 1);
+            bool lepes = Math.Abs(selectedField.Row - currentField.Row) + Math.Abs(selectedField.Column - currentField.Column) == 1;
+
             // Note: selectedField is always the players own field...
             // EVIP: IsEmpty() is more descriptive than "Owner == 0"
-            if (Math.Abs(selectedField.Row - currentField.Row)
-                + Math.Abs(selectedField.Column - currentField.Column) == 1
+
+            if (
+                (atlo || lepes)
                 && !selectedField.IsEmpty()
                 && currentField.IsEmpty())
             {
@@ -25,6 +29,7 @@ namespace AttaxxPlus.Model.Operations
                 ChangeOwnerOfOccupiedFieldsAroundField(currentField);
                 return true;
             }
+
             return false;
         }
     }
