@@ -1,5 +1,6 @@
 ﻿using System;
 using AttaxxPlus.Model;
+using AttaxxPlus.ViewModel;
 
 namespace AttaxxPlus.Boosters
 {
@@ -13,11 +14,24 @@ namespace AttaxxPlus.Boosters
 
         public SurrenderBooster() : base()
         {
+            LoadImage(new Uri(@"ms-appx:///Boosters/SurrenderBooster.png"));
         }
 
         public override bool TryExecute(Field selectedField, Field currentField)
         {
-            return false;
+
+            foreach (FieldViewModelList row in this.GameViewModel.Fields)
+            {
+                foreach (FieldViewModel field in row)
+                {
+                    if (field.Owner == 0)
+                    {
+                        field.Model.Owner = 3 - this.GameViewModel.CurrentPlayer;
+                    }
+                }
+            }
+
+            return true;
         }
     }
 }
