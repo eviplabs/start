@@ -122,6 +122,7 @@
     <Compile Include="Boosters\BoosterBase.cs" />
     <Compile Include="Boosters\DummyBooster.cs" />
     <Compile Include="Boosters\IBooster.cs" />
+    <Compile Include="Boosters\RowColBooster.cs" />
     <Compile Include="Boosters\SurrenderBooster.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -155,6 +156,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Boosters\DummyBooster.png" />
+    <Content Include="Boosters\RowColBooster.png" />
     <Content Include="Boosters\SurrenderBooster.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
