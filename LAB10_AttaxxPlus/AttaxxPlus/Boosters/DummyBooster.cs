@@ -45,7 +45,8 @@ namespace AttaxxPlus.Boosters
                 Notify(nameof(Title));
                 return true;
             }
-            return true;
+            //6. Feladat
+            return false;
         }
     }
 }
