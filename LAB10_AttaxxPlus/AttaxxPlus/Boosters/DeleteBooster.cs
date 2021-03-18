@@ -49,31 +49,38 @@ namespace AttaxxPlus.Boosters
 
         public override bool TryExecute(Field selectedField, Field currentField)
         {
-            if(usableCounter > 0)
-            {
-                usableCounter = 0;
-
-                if (GameViewModel.CurrentPlayer == 1)
+            if(selectedField != null) 
+            { 
+                if(usableCounter > 0)
                 {
-                    usableCounterPlayer1 = usableCounter;
-                }
-                else
-                {
-                    usableCounterPlayer2 = usableCounter;
-                }
+                    usableCounter = 0;
 
-                foreach (var i in GameViewModel.Model.Fields)
-                { 
-                    if(i.Row == selectedField.Row)
-                        i.Owner = 0;
+                    if (GameViewModel.CurrentPlayer == 1)
+                    {
+                        usableCounterPlayer1 = usableCounter;
+                    }
+                    else
+                    {
+                        usableCounterPlayer2 = usableCounter;
+                    }
+
+                    foreach (var i in GameViewModel.Model.Fields)
+                    { 
+                        if(i.Row == selectedField.Row)
+                            i.Owner = 0;
                 
-                    if(i.Column == selectedField.Column)
-                        i.Owner = 0;
+                        if(i.Column == selectedField.Column)
+                            i.Owner = 0;
+                    }
                 }
+                Notify(nameof(Title));
+                return true;
             }
-
-            Notify(nameof(Title));
-            return true;
+            else
+            {
+                return false;
+            }
+            
         }
     }
 }
