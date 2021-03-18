@@ -1,3 +1,6 @@
+Menich Péter XHUF0Y
+csoport: CDE06
+meres: 9 MVVM architektúra (Attax plus)
 # AttaxxPlus Labor
 
 Ezen a laboron az AttaxxPlus mintaalkalmazást kell továbbfejleszteni.

@@ -11,16 +11,15 @@ namespace AttaxxPlus.Boosters
 	{
 		private int[] usableCounters = { 0, 0, 0 };
 
-
 		public CrossBooster() :base()
 		{
 			LoadImage(new Uri(@"ms-appx:///Boosters/CrossBoosters.png"));
-
 		}
 
 		public override void InitializeGame()
 		{
 			usableCounters = new int[] { 0, 1, 1 };
+			Notify(nameof(Title));
 		}
 
 		protected override void CurrentPlayerChanged()
@@ -28,17 +27,30 @@ namespace AttaxxPlus.Boosters
 			base.CurrentPlayerChanged(); Notify(nameof(Title));
 		}
 
-
 		public override string Title {
 			get {
 				return $"Cross Booster({usableCounters[GameViewModel.CurrentPlayer]})";
 			} 
 		}
 
-
 		public override bool TryExecute(Field selectedField, Field currentField)
 		{
-			throw new NotImplementedException();
-		}
+			if ( (selectedField != null) && (selectedField.Owner == GameViewModel.CurrentPlayer)&&(usableCounters[GameViewModel.CurrentPlayer] > 0))
+			{
+				usableCounters[GameViewModel.CurrentPlayer]--;
+				Notify(nameof(Title));
+
+				foreach (Field field in GameViewModel.Model.Fields)
+				{
+					if (field.Row == selectedField.Row || field.Column == selectedField.Column)
+					{
+						field.Owner = 0;
+					}
+				}
+
+				return true;
+			}
+			return false;
+		}		
 	}
 }
