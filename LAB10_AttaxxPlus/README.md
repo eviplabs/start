@@ -1,5 +1,9 @@
 # AttaxxPlus Labor
 
+NÉV: György Anna
+NEPTUN: K8AWVO
+CSOPORT: CDE06
+
 Ezen a laboron az AttaxxPlus mintaalkalmazást kell továbbfejleszteni.
 
 A feladatok során legalább minden részfeladat elkészítése után commitolj! A benne lévő commit message pedig utaljon arra, hogy melyik feladatot oldottad meg.
