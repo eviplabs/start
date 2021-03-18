@@ -27,6 +27,7 @@ Ebben a feladatban megint egy lehetséges hibaforrást kell megvizsgálni, ezzel
 
 A FieldCommand.Execute-ban a "vm.SelectedField = current;" helyett miért nem elég a "current.IsSelected=true;"? A megoldáshoz meg kell nézni az IsSelected propertyt, és hogy mi történik, amikor ennek értéket adunk. Lehet, hogy nem csak egy értékadás fut le, hanem valami más is...
 
+Hiba: Kiválasztjuk a saját mezőnket és utána nem tudunk másik mezőt kijelölni.
 ## 4. feladat: átlós lépés
 
 A kiadott játékban van egy hiba: az eredeti szabályok szerint a szomszéd mezőre lépéskor átlósan is lehet lépni, most azonban csak lapjával szomszédos mezőre lehetséges. A feladat a hiba kijavítása. 
