@@ -49,6 +49,7 @@ namespace AttaxxPlus.ViewModel
         public FieldViewModel SelectedField
         {
             get => selectedField;
+            //3. Feladat
             set
             {
                 if (selectedField != value)
