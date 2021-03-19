@@ -13,11 +13,24 @@ namespace AttaxxPlus.Boosters
 
         public SurrenderBooster() : base()
         {
+            LoadImage(new Uri(@"ms-appx:///Boosters/SurrenderBooster.png"));
         }
 
         public override bool TryExecute(Field selectedField, Field currentField)
         {
-            return false;
+            //8. Feladat
+            for (int i = 0; i < this.GameViewModel.Fields.Count; i++)
+            {
+                for (int j = 0; j < this.GameViewModel.Fields.Count; j++)
+                {
+                    if (this.GameViewModel.Model.Fields[i, j].Owner == 0)
+                    {
+                        this.GameViewModel.Model.Fields[i, j].Owner = 3 - this.GameViewModel.CurrentPlayer;
+
+                    }
+                }
+            }
+            return true;
         }
     }
 }
