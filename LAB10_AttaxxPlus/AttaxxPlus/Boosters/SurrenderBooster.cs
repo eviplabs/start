@@ -1,5 +1,6 @@
 ﻿using System;
 using AttaxxPlus.Model;
+using AttaxxPlus.ViewModel;
 
 namespace AttaxxPlus.Boosters
 {
@@ -10,14 +11,17 @@ namespace AttaxxPlus.Boosters
     {
         // EVIP: compact override of getter for Title returning constant.
         public override string Title => "Surrender";
-
         public SurrenderBooster() : base()
         {
         }
 
         public override bool TryExecute(Field selectedField, Field currentField)
         {
-            return false;
+            foreach (Field field in GameViewModel.Model.Fields)
+            {
+                field.Owner =(GameViewModel.CurrentPlayer)%2+1;
+            }
+            return true;
         }
     }
 }
