@@ -4,9 +4,9 @@ Erről a repositoryról készülnek a hallgatói személyes másolatok a classro
 A repository private, a tárgy oktatóin kívül más nem láthatja.
 Az egyértelmű azonosíthatóság érdekében kérünk, add meg az alábbiakat:
 
-## NÉV: 
-## Neptun-kód: 
-## Kurzus: 
+## NÉV: Sági Bálint
+## Neptun-kód: R1FOP4
+## Kurzus: L2
 
 # Hasznos linkek 
 
