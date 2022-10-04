@@ -30,7 +30,7 @@ Hint: Maga a bináris keresés algoritmusa adott, csak ki kell kommentezni, a re
 
 Vizsgáljuk meg a futási időket! Mennyivel tart tovább a beszúrás, mint eddig? A választ ide írd be és majd commitold ennek a fájlnak a változásait is a megoldással együtt:
 
-VÁLASZ: Régi futásidő: _____, új futásidő: ______
+VÁLASZ: Régi futásidő: 00:00:000140799, új futásidő: 00:00:00.5682822
 
 Készítsünk egy olyan megvalósítást, ami egy másik adatstruktúrát használ, ahol új elem bárhova beszúrása könnyedén lehetséges!
 
@@ -38,7 +38,7 @@ Hint: LinkedList (és megfelelő függvényei)
 
 A láncolt listás megvalósításnál a bináris keresés lelassult, mivel az elemeket nem tudjuk közvetlenül címezni. Nem nyertünk sokat a listás megvalósításhoz képest. Az elemek sorrendben tárolása nem is annyira fontos, csak a gyors elérésük a cél. A User-eket id-juk alapján akarjuk elérni.
 
-VÁLASZ: A MeasureGetByIdNumber által mért futásidő ebben az esetben: ______ms
+VÁLASZ: A MeasureGetByIdNumber által mért futásidő ebben az esetben: 7.984 s
 
 Használjunk egy olyan adatstruktúrát, ahol az egyes elemeket valamilyen kulcs alapján gyorsan el lehet érni!
 
@@ -46,13 +46,14 @@ Hint: Dictionary (és megfelelő függvényei)
 
 A példaalkalmazás méri, hogy az egyes megvalósítások mennyi idő alatt végzik el a beszúrást és nagyobb számban a lekérdezést. Miután elkészültünk a repository-k különböző adatstruktúrás megvalósításával jegyezzük le az alábbi táblázatba, hogy melyik megoldás mennyi ideig végezte a műveleteket!
 
+
 Adattároló      | Feltöltési idő    | Lekérdezési idő
 ----------------|-------------------|----------------
-Array           |                   |
-List            |                   |
-List (sorted)   |                   |
-LinkedList      |                   |
-Dictionary      |                   |
+Array           |00:00:00.0079707   |00:00:01.238405
+List            |00:00:00.01400799  |00:00:01.4001019
+List (sorted)   |00:00:00.5682822   |00:00:00.0266554
+LinkedList      |00:00:00.6761937   |00:00:07.8943655
+Dictionary      |00:00:00.0029989   |00:00:00.0016540
 
 ## Második feladat
 
